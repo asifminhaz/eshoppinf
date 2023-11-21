@@ -77,7 +77,7 @@ async function run() {
       const result = await cartCollection.find(query).toArray()
       res.send(result)
     })
-// delete 
+// delete carts
 app.delete('/carts/:id', async(req, res)=> {
   const id = req.params.id;
   const query = {_id: new ObjectId(id)}
@@ -85,7 +85,7 @@ app.delete('/carts/:id', async(req, res)=> {
   res.send(result)
 })
 
-// create payment intent
+// create payment intent//
 
 app.post('/create-payment-intent', async (req, res) => {
   const { price } = req.body;
@@ -102,7 +102,7 @@ app.post('/create-payment-intent', async (req, res) => {
 })
 
 
-//payment related api
+//payment related api//
 
 app.post('/payments', async(req,res) => {
   const payment = req.body
@@ -119,8 +119,7 @@ app.post('/payments', async(req,res) => {
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
-    // Ensures that the client will close when you finish/error
-    // await client.close();
+   
   }
 }
 run().catch(console.dir);
